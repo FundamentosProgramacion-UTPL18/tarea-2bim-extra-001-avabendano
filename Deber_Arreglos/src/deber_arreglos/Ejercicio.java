@@ -22,24 +22,30 @@ public class Ejercicio {
         double suma_total;
         double promedio;
         double total_sucursales = 0;
-
         double[] venta_total_sucursal = new double[4];
         double[] venta_promedio_sucursal = new double[4];
 
+        // Crear el encabezado del reporte
         reportes = String.format("Reporte\n\n%-20s%-20s%-20s%-20s%-20s%-20s\n\n", "", meses[0], meses[1], meses[2], "Total", "Promedio");
         for (int contador = 0; contador < ventas_mes_2.length; contador++) {
             suma_total = ventas_mes_1[contador] + ventas_mes_2[contador] + ventas_mes_3[contador];
             promedio = suma_total / 3;
             venta_total_sucursal[contador] = suma_total;
             venta_promedio_sucursal[contador] = promedio;
+
+            // Creando cada linea de datos
             reportes = String.format("%s%-20s%-20.2f%-20.2f%-20.2f%-20.2f%-20.2f\n", reportes, sucursales[contador], ventas_mes_1[contador], ventas_mes_2[contador], ventas_mes_3[contador], venta_total_sucursal[contador], venta_promedio_sucursal[contador]);
 
         }
+        // Calculo de todas las sucursales   
         for (int contador = 0; contador < venta_total_sucursal.length; contador++) {
             total_sucursales = total_sucursales + venta_total_sucursal[contador];
 
         }
+        // Pie de Reporte
         reportes = String.format("%s\nTotales de ventas de todas las sucursales es: %.2f", reportes, total_sucursales);
+
+        // Presentacion del Reporte
         System.out.println(reportes);
     }
 
